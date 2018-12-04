@@ -1,0 +1,17 @@
+### List of commands used in cmder (bash) @Windows 10
+
+# Build
+./gradlew build
+
+# Start container
+docker-compose up --build vault
+
+# See the list of containers in docker
+docker container ls
+
+# Exec into container
+docker exec -it  spring-boot-vault-demo_vault_1 //bin//sh
+
+# Initialize vault in container
+docker-compose --no-ansi exec -e VAULT_CLI_NO_COLOR=1 -e VAULT_CACERT=/vault/config/ssl/vault.crt.pem vault \
+  vault operator init -key-shares=1 -key-threshold=1 > vault_data.txt
